@@ -2,6 +2,9 @@ const alpha = 'abcdefghijklmnopqrstuvwxyz'
 const alphaUpper = alpha.toUpperCase()
 const alphaMixed = alpha + alphaUpper
 const numeric = '0123456789'
+const alphaNumeric = alpha + numeric
+const alphaNumericUpper = alphaUpper + numeric
+const alphaNumericMixed = alphaMixed + numeric
 const hex = '0123456789abcdef'
 const hexUpper = hex.toUpperCase()
 const hexMixed = hex + 'ABCDEF'
@@ -14,6 +17,7 @@ class Randomizer {
 
     static ALPHA = 'alpha'
     static NUMERIC = 'numeric'
+    static ALPHANUMERIC = 'alphanumeric'
     static HEX = 'hex'
     static CUSTOM = 'custom'
 
@@ -22,21 +26,67 @@ class Randomizer {
             lower: {
                 alpha: alpha,
                 numeric: numeric,
+                alphanumeric: alphaNumeric,
                 hex: hex
             },
             upper: {
                 alpha: alphaUpper,
                 numeric: numeric,
+                alphanumeric: alphaNumericUpper,
                 hex: hexUpper
             },
             mixed: {
                 alpha: alphaMixed,
                 numeric: numeric,
+                alphanumeric: alphaNumericMixed,
                 hex: hexMixed
             }
         }
     }
 
+    // Short hands
+    alpha(length) {
+        return this.get({
+            type: Randomizer.ALPHA,
+            length: length,
+            case: Randomizer.LOWERCASE
+        })
+    }
+
+    numeric(length) {
+        return this.get({
+            type: Randomizer.NUMERIC,
+            length: length,
+            case: Randomizer.LOWERCASE
+        })
+    }
+
+    hex(length) {
+        return this.get({
+            type: Randomizer.HEX,
+            length: length,
+            case: Randomizer.LOWERCASE
+        })
+    }
+
+    alphanumeric(length) {
+        return this.get({
+            type: Randomizer.ALPHANUMERIC,
+            length: length,
+            case: Randomizer.LOWERCASE
+        })
+    }
+
+    custom(length, charset) {
+        return this.get({
+            type: Randomizer.CUSTOM,
+            length: length,
+            case: Randomizer.LOWERCASE,
+            charset: charset
+        })
+    }
+
+    // Low level
     get(options) {
         const defaultOptions = {
             type: Randomizer.ALPHA,
