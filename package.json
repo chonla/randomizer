@@ -1,0 +1,12 @@
+{
+    "name": "@chonla/randomizer",
+    "version": "1.0.0",
+    "description": "Just a string randomizer",
+    "license": "MIT",
+    "author": {
+        "name": "Chonlasith Jucksriporn",
+        "url": "https://github.com/chonla",
+        "email": "chonlasith@gmail.com"
+    },
+    "keywords": ["randomizer","string","chonla"]
+}
